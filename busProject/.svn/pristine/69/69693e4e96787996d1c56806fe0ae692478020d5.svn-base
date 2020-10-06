@@ -1,0 +1,57 @@
+package chatbots;
+
+
+import java.util.Collections;	
+import java.util.HashMap;	
+import java.util.Map;	
+import javax.servlet.http.HttpSession;	
+import javax.websocket.EndpointConfig;	
+import javax.websocket.OnClose;	
+import javax.websocket.OnError;	
+import javax.websocket.OnMessage;	
+import javax.websocket.OnOpen;	
+import javax.websocket.Session;	
+import javax.websocket.server.ServerEndpoint;	
+
+// https://nowonbun.tistory.com/621 참고작성
+@ServerEndpoint(value = "/websocket", configurator = webStage.class)	
+public class websocket {
+	
+	//@Inject
+	//private static IChatService chatService;
+	private Map<Session, EndpointConfig> cfgs = Collections.synchronizedMap(new HashMap<>());
+
+	
+	@OnOpen	
+	public void handleOpen(Session wsSess, EndpointConfig wsCfg) {
+	  System.out.println("클라이언트가 연결되었습니다.");	
+	  if (!cfgs.containsKey(wsSess)) {
+	  	cfgs.put(wsSess, wsCfg);	
+	  }	
+	}	
+
+	@OnMessage	
+	public String handleMessage(String msgs, Session wsSess) {
+	  if (cfgs.containsKey(wsSess)) {	
+	    EndpointConfig wsCfg = cfgs.get(wsSess);
+	    HttpSession httpSess = (HttpSession) wsCfg.getUserProperties().get(webStage.Sess);
+	    return "Session - " + (String) httpSess.getAttribute("TestSession");	
+	  }	
+	  return "error";
+	}
+	
+	@OnClose	
+	public void handleClose(Session wsSess) {	
+	  System.out.println("클라이언트가 연결종료되었습니다.");
+	  if (cfgs.containsKey(wsSess)) {	
+	    cfgs.remove(wsSess);	
+	  }	
+	}	
+	
+	@OnError	
+	public void handleError(Throwable e, Session wsSess) {	
+	  System.out.println("wsSess = " + wsSess +", 클라이언트가 오류가 났습니다.");
+	  System.out.println("클라이언트가 오류가 났습니다.");
+	  //e.printStackTrace();	
+	}	
+}

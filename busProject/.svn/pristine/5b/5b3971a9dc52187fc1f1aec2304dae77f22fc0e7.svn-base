@@ -1,0 +1,125 @@
+@charset "UTF-8";
+*{
+	font-size: 12pt;
+}
+tr,td{
+/* 	border: 1px solid red; */
+}
+a{
+	color: rgb(52,85,139);
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover{
+	color: rgb(52,180,180);
+}
+.table{
+	font-size: 12pt;
+}
+table{
+	width: 800px;
+	border-bottom: 3px solid #777;
+	margin-bottom: 100px;
+}
+.noticeTitle{
+	text-align: center;
+	padding-bottom: 80px;
+}
+h1{
+	font-size: 40pt;
+	color: rgb(52,85,139);
+}
+.subTitle{
+	color: #aaa;
+	font-size: 10pt;
+	margin-top: -15px;
+	cursor: default;
+}
+.admin{
+	border-bottom: 3px solid #777;
+	text-align: right; 
+	padding: 10px;
+}
+.list{
+	cursor: pointer;
+}
+.FaQTitle{
+	color: rgb(52,85,139);
+	font-size: 18pt;
+	font-weight: 900;
+	margin-top: 5px;
+}
+.FaQSubTitle{
+	display: block;
+	color: #777;
+	font-size: 12pt;
+	font-weight: 550;
+	margin-top: -15px;
+	width: 780px; 
+	white-space: nowrap;
+	overflow: hidden;
+	word-break: keep-all;
+	text-overflow: ellipsis;
+	margin-bottom: 5px;
+}
+th{
+	text-align: center;
+	color: rgb(52,85,139);
+	font-size: 16pt;
+	font-weight: 800;
+	background: rgba(52,85,139,0.2);
+	border-bottom: 1px solid #ccc;
+}
+td{
+	padding: 5px;
+}
+.pages{
+	font-size: 10pt;
+	border-top: 3px solid #ccc;
+	padding-top: 10px;
+}
+font{
+	color: rgb(52,180,180);
+}
+.search{
+/* 	border-top: 1px dotted #ccc; */
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+.sc_sel{
+	font-size: 12pt;
+	height: 30px;
+	color: rgb(52,85,139);
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 4px;
+}
+.sc_sel:hover, .sc_sel:focus{
+	border: 1px solid rgb(52,85,139);
+	background: rgba(255,255,180,0.2);
+}
+.sc_txt{
+	font-size: 12pt;
+	height: 30px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 5px;
+}
+.sc_txt:hover,.sc_txt:focus{
+	border: 1px solid rgb(52,85,139);
+	background: rgba(255,255,180,0.2);
+}
+.sc_btn{
+	font-size: 12pt;
+	vertical-align: middle;
+	height: 30px;
+	color: #fff;
+	background: rgb(52,85,139);
+	border: none;
+	border-radius: 5px;
+	padding: 6px;
+	cursor: pointer;
+}
+.sc_btn:hover {
+	box-shadow: 0 0 10px rgba(52,85,139,0.5);
+}

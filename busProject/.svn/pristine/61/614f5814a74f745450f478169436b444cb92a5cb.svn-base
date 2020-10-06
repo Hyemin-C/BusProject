@@ -1,0 +1,77 @@
+@charset "UTF-8";
+*{
+	font-size: 12pt;
+}
+a{
+	color: rgb(52,85,139);
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover{
+	color: rgb(52,180,180);
+}
+.table{
+	font-size: 12pt;
+}
+table{
+	width: 1000px;
+}
+.noticeTitle{
+	text-align: center;
+	border-bottom: 3px solid #777;
+	padding: 20px;
+	padding-bottom: 80px
+}
+h1{
+	font-size: 40pt;
+	color: rgb(52,85,139);
+	margin-top: 50px;
+}
+p{
+	color: #aaa;
+	font-size: 10pt;
+	margin-top: -15px;
+}
+th{
+	text-align: center;
+	color: rgb(52,85,139);
+	font-size: 16pt;
+	font-weight: 800;
+	background: rgba(52,85,139,0.2);
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+}
+th span{
+	color: green;
+	font-size: 10pt;
+}
+td{
+	padding: 10px;
+}
+.title{
+	width: 800px;
+	padding: 10px;
+	border: none;
+}
+.content{
+	width:800px;
+	height: 400px;
+	padding: 10px;
+	border: none;
+}
+.btn_cell{
+	text-align: center;
+	border-top: 3px solid #777;
+}
+.submit_btn{
+	font-size: 16pt;
+	color: #fff;
+	background: rgb(52,85,139);
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	cursor: pointer;
+}
+.submit_btn:hover {
+	box-shadow: 0 0 10px rgba(52,85,139,0.5);
+}

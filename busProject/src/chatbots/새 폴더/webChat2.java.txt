@@ -1,0 +1,71 @@
+package chatbots;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.websocket.OnClose;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
+
+
+@ServerEndpoint("/webChat2")
+public class webChat2 {
+	
+	private static List<Session> sUs = Collections.synchronizedList(new ArrayList<>());
+	private static Pattern pat = Pattern.compile("^\\{\\{.*?\\}\\}");
+	
+	@OnOpen
+	public void handleOpen(Session uSess) {
+		sUs.add(uSess);
+		System.out.println("클라이언트 접속");
+	}
+	
+	@OnClose
+	public void handleClose(Session uSess) {
+		sUs.remove(uSess);
+		System.out.println("클라이언트 해제");
+	}
+	
+	/*
+	 * @OnError public void handleError(Throwable t) {
+	 * System.out.println("chatbos error : " + t); }
+	 */
+	
+	@OnMessage
+	public void handleMessage(String msgs, Session uSess) throws IOException{
+		
+		System.out.println("clientMsg => " + msgs);		
+		String name = "손님";		
+		Matcher m = pat.matcher(msgs);
+		//int matchCount = 0;
+		if(m.find()) {
+			name=m.group();
+			//matchCount++;
+		}
+		
+		
+		// https://coding-factory.tistory.com/529
+		// https://dev-woo.tistory.com/44
+		final String msg = msgs.replaceAll(pat.pattern(), "");
+		final String uname = name.replaceFirst("^\\{\\{", "").replaceFirst("\\}\\}$", "");
+		
+		
+		sUs.forEach(session->{
+			if(session==uSess) { return ;}
+			try {
+//				 RemoteEndpoint.Basic remote = session.getBasicRemote();
+//         remote.sendText("hi there");
+				session.getBasicRemote().sendText(uname + " => " + msg);
+			} catch(IOException e) { e.printStackTrace();}
+		});
+		
+	}// handleMessage()
+	
+	
+}

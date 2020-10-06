@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="notice.noticeDAO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BusReservation</title>
+<link rel="stylesheet" type="text/css" href="./css/noticeWriteCSS.css">
+</head>
+<script src="./js/notice.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		 $('.content').keyup(function(e){
+			 var cont = $('.content').val();
+			 $('.content_cnt').html(cont.length+'/333');
+		 });
+		 $('.content').keyup();
+	});
+	$(function(){
+		 $('.title').keyup(function(e){
+			 var cont = $('.title').val();
+			 $('.title_cnt').html(cont.length+'/33');
+		 });
+		 $('.title').keyup();
+	});
+</script>
+<jsp:include page="../header.jsp"></jsp:include>
+<body>
+	<div class="table">
+		<form name="noticeForm" action="noticeInsert.do" method="get">
+			<table align="center">
+				<tr>
+					<td class="noticeTitle" colspan="4">
+						<a href="noticeList.do"><h1>공지사항</h1><a>
+						<p>BusReservation의 새로운 소식을 알려드립니다.	새로운 소식들과 함께 즐거운 여행되세요.</p>
+					</td>
+				</tr>
+				<tr>
+					<th width="100px">
+						제목 <br> 
+						<span class="title_cnt"></span>
+					</th> 
+					<td> 
+						<input type="text" name="title" class="title" maxlength="33" placeholder="33자 이내로 작성하세요.">
+					</td>
+				<tr>
+					<th>
+						내용 <br>
+						<span class="content_cnt"></span>
+					</th>
+					<td>
+						<textarea class="content" name="content" maxlength="333" placeholder="333자 이내로 작성하세요."></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="btn_cell">
+						<input type="hidden" name="cnct" value="#">
+						<input type="button" onclick="nullCheck()" class="submit_btn" value="작성완료">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<jsp:include page="../footer.jsp"></jsp:include>
+</html>

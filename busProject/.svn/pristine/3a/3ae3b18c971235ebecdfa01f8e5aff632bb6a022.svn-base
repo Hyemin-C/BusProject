@@ -1,0 +1,107 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file = "../header.jsp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+function loginCheck() {
+	if (document.frm.m_id.value.length == 0) {
+		alert("아이디를 써주세요");
+		frm.m_id.focus();
+		return false;
+	}
+	if (document.frm.m_pw.value == "") {
+		alert("암호는 반드시 입력해야 합니다.");
+		frm.pwd.focus();
+		return false;
+	}
+	return true;
+}
+function idCheck() {
+	if (document.frm.m_id.value == "") {
+		alert('아이디를 입력하여 주십시오.');
+		document.formm.m_id.focus();
+		return;
+	}
+	var url = "idCheck.do?m_id=" + document.frm.m_id.value;
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+
+
+
+function joinCheck() {
+	if (document.frm.m_id.value.length == 0) {
+		alert("아이디를 써주세요");
+		frm.m_id.focus();
+		return false;
+	}
+	if (document.frm.m_id.value.length < 4) {
+		alert("아이디는 4글자이상이어야 합니다.");
+		frm.m_id.focus();
+		return false;
+	}
+	if (document.frm.m_pw.value == "") {
+		alert("암호는 반드시 입력해야 합니다.");
+		frm.m_pw.focus();
+		return false;
+	}
+	if (document.frm.m_pw.value != document.frm.m_pw_check.value) {
+		alert("암호가 일치하지 않습니다.");
+		frm.m_pw.focus();
+		return false;
+	}
+	if (document.frm.reid.value.length == 0) {
+		alert("중복 체크를 하지 않았습니다.");
+		frm.m_id.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- <script type="text/javascript" src="../js/member.js"></script> -->
+</head>
+<body>
+	<h2>회원 가입</h2>
+	'*' 표시 항목은 필수 입력 항목입니다.
+	<form action="Login.do" method="post" name="frm">
+		<table>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="m_id" size="20"  id="m_id" value="admin">* <input
+					type="hidden" name="reid" size="20" > <input type="button"
+					value="중복 체크" onclick="idCheck();"></td>
+			</tr>
+			<tr>
+				<td>암 호</td>
+				<td><input type="password" name="m_pw" size="20">*</td>
+			</tr>
+			<tr height="30">
+				<td width="80">암호 확인</td>
+				<td><input type="password" name="m_pw_check" size="20">*</td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" name="m_email" size="20">*</td>
+				
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td><input type="text" name="m_phone" size="20"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="확인"
+					onclick="return joinCheck()">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="취소">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">${message }</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

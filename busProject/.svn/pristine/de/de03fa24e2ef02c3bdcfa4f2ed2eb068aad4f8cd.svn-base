@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="FaQ.FaQDAO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BusReservation</title>
+<link rel="stylesheet" type="text/css" href="./css/noticeWriteCSS.css">
+</head>
+<script src="./js/notice.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		 $('.content').keyup(function(e){
+			 var cont = $('.content').val();
+			 $('.content_cnt').html(cont.length+'/333');
+		 });
+		 $('.content').keyup();
+	});
+	$(function(){
+		 $('.title').keyup(function(e){
+			 var cont = $('.title').val();
+			 $('.title_cnt').html(cont.length+'/33');
+		 });
+		 $('.title').keyup();
+	});
+</script>
+<jsp:include page="../header.jsp"></jsp:include>
+<body>
+	<div class="table">
+		<form name="noticeForm" action="FaQInsert.do" method="get">
+			<table align="center">
+				<tr>
+					<td class="noticeTitle" colspan="4">
+						<a href="FaQList.do"><h1>자주 묻는 질문(FaQ)</h1><a>
+						<p class="subTitle">Bus에 대해 궁금하신 것을 해결해 드립니다. <br> 다른 문의사항이 있으시다면 이메일 또는 문의전화를 이용해 주시기 바랍니다.</p>
+					</td>
+				</tr>
+				<tr>
+					<th width="100px">
+						제목 <br> 
+						<span class="title_cnt"></span>
+					</th> 
+					<td> 
+						<input type="text" name="title" class="title" maxlength="33" placeholder="33자 이내로 작성하세요.">
+					</td>
+				<tr>
+					<th>
+						내용 <br>
+						<span class="content_cnt"></span>
+					</th>
+					<td>
+						<textarea class="content" name="content" maxlength="333" placeholder="333자 이내로 작성하세요."></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="btn_cell">
+						<input type="hidden" name="cnct" value="#">
+						<input type="button" onclick="nullCheck()" class="submit_btn" value="작성완료">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<jsp:include page="../footer.jsp"></jsp:include>
+</html>

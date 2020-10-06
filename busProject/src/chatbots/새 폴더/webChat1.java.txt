@@ -1,0 +1,40 @@
+package chatbots;
+
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.server.ServerEndpoint;
+
+
+@ServerEndpoint("/webChat1")
+public class webChat1 {
+	
+	@OnOpen
+	public void handleOpen() {
+		System.out.println("클라이언트 접속");
+	}
+	
+	@OnClose
+	public void handleClose() {
+		System.out.println("클라이언트 해제");
+	}
+	
+	@OnError
+	public void handleError(Throwable t) {
+		System.out.println("chatbos error : " + t);
+	}
+	
+	@OnMessage
+	public String handleMessage(String msg) {
+		System.out.println("clientMsg => " + msg);
+		msg = msg.replaceAll("(\r\n|\r|\n|\n\r)", " ");
+		String rmsg = "echo " + msg;
+		if(rmsg!="") {
+			System.out.println("serverMsg => " + rmsg);
+			return rmsg;
+		}
+		return "";
+	}
+	
+}

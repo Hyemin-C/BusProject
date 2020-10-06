@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="./header.jsp" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> b_timeCheck.jsp </title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/b_timeCheck.css"/>
+  <script>
+  	$(function() {
+  		$("#datepicker4").datepicker({minDate:0, maxDate:"+1M +10D",dateFormat:"yy/mm/dd"});
+  		
+  	});
+  </script>
+</head>
+<script type="text/javascript" src="js/b_timeCheck.js"></script>
+<body>
+  <div align="center" id="bgtimeCheck">
+    <form name="timeCheck" action="timeCheck.do"> 
+     <table style="width: 630px;"> 
+      <tr><br><br>
+        <td width="20%"> <p id="btnSel">출발지 </td>
+        <td width="20%"> <p id="btnSel">도착지 </td>  
+      </tr> 
+      <tr>
+        <td> <input type="text" class="txt" id="departT" name="departT"  value="<c:if test="${empty departT}">출발</c:if><c:if test="${!empty departT}">${departT}</c:if>"  onclick="selectA()"> </td>
+        <td> <input type="text" class="txt" id="arrivalT" name="arrivalT"  value="<c:if test="${empty arrivalT}">도착</c:if><c:if test="${!empty arrivalT}">${arrivalT}</c:if>" onclick="selectB()"> </td>
+        <td width="35%" id="btnSel"> 가는날: <input type="text"  name="datepicker4" id="datepicker4" > </td>
+        <td> <input type="button" class="btnlevel" name="normal1" id="normal1" value="일반" onclick="seatLevel1()">
+             <input type="button" class="btnlevel" name="supe1" id="supe1" value="우등" onclick="seatLevel2()"> 
+             <input type="hidden" name="levelO" id="levelO" value="1">    
+        </td>
+      </tr>
+      <tr align="center" >
+        <td colspan="4" class="submit_btn"> <input type="button" id="btnSearch" value="조회" onclick="searchA()" ></td>
+      </tr>
+      </table>
+    </form>
+    </div>
+    <jsp:include page="b_timeCheckList.jsp"/>
+</body>
+</html>

@@ -1,0 +1,74 @@
+package Member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/AdminLogin.do")
+public class AdminLoginController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	public AdminLoginController() {
+		super();
+	}
+	
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String url = "Member/AdminLogin.jsp";
+		HttpSession session = request.getSession();
+		if (session.getAttribute("m_id") != null) {// 이미 로그인 된 사용자이면
+			url = "../b_main.jsp"; // 메인 페이지로 이동한다.
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
+		System.out.println("2222");
+	}
+	
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+			System.out.println("doPost");
+			String url = "Member/AdminLogin.jsp"; 
+			request.setCharacterEncoding("utf-8");
+			 response.setContentType("text/html;charset=utf-8");
+			 PrintWriter out = response.getWriter();
+			 
+			 String id = request.getParameter("m_id");
+			 String pw = request.getParameter("m_pw");
+			 MemberDAO dao = MemberDAO.getInstance();
+			 System.out.println("아이디: " + id);
+		     System.out.println("비밀번호: " + pw);
+			 
+		     if(id != null && (id.length()!=0)) {
+				 //로그인시 admin체크
+				 if(id.equals("admin")) {
+					 	MemberDTO dto = dao.getMember(id);
+					 	HttpSession session = request.getSession();
+						session.setAttribute("m_id", dto);
+					 	out.print("<html>");
+		        		out.print("<body>");
+		        		out.print("<font size='8'>관리자로 로그인 하셨습니다!!</font>" );
+		        		out.print("<br>");
+		        		out.print("<input type=button value='회원정보 수정하기'>");
+		        		out.print("<input type=button value='회원정보 삭제하기'>");
+		        		out.print("</html>");
+		        		out.print("</body>");
+				 } else {
+		        		out.print("<html>");
+		        		out.print("<body>");
+		        		out.print( id +" 님!! 로그인 하셨습니다." );
+		        		out.print("</html>");
+		        		out.print("</body>");	   
+		        	}
+				 response.sendRedirect("b_main.jsp");
+			 }
+			 out.close();
+			 
+	}
+}

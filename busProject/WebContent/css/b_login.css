@@ -1,0 +1,82 @@
+@charset "EUC-KR";
+
+*{
+	color: #333;
+	font-size: 18pt;
+	font-family: "Roboto", sans-serif;
+}
+input:focus{
+	outline: none;
+}
+tr, td{
+/* 	border: 1px solid red; */
+}
+
+.frame{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70vh;
+}
+table{
+	width: 450px;
+}
+h2{
+	color: rgb(52,85,139);
+	font-size: 70pt;
+	margin: 20px;
+}
+
+.attribute{
+	font-size: 24pt;
+	font-weight: 900;
+}
+input[type=text],input[type=password]{
+	width: 280px;
+	color: #333;
+	padding: 10px;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+}
+
+input[type=text]:hover,input[type=password]:hover{
+	border: 1px solid rgb(52,85,139);
+}
+input[type=text]:focus,input[type=password]:focus{
+	border: 1px solid rgb(52,85,139);
+}
+
+input[type=submit]{
+	color: #fff;
+	background: rgb(52,85,139);
+	width: 432px;
+	height: 60px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+input[type=submit]:hover{
+	background: rgb(52,100,139);
+}
+.signup_btn, a{
+	color: #777;
+	font-size: 12pt;
+	font-weight: 900;
+	padding:10px;
+	text-decoration: none;
+}
+
+.signup_btn a:hover {
+	color: rgb(52,85,139);
+}
+
+.message{
+	color: rgb(255,0,0);
+	padding: 10px;
+	font-size: 12pt;
+}
+
+.secret{
+	opacity: 0;
+	cursor: default;
+}

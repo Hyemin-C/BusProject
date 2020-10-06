@@ -1,0 +1,65 @@
+package Member;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import DBConnect.DBConnect;
+
+@WebServlet("/Join.do")
+public class JoinController extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
+	public JoinController() {
+		super();
+	}
+	
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doJoin(req, resp);
+	}
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doJoin(req, resp);
+	}
+
+	public void doJoin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		  String url = "Member/Join.jsp";  
+			String id = request.getParameter("m_id");
+			String pw = request.getParameter("m_pw");
+			String email = request.getParameter("m_email");
+			String phone = request.getParameter("phone");
+		
+		    String url="Member/Join.jsp";
+			MemberDTO dto = new MemberDTO();
+			
+			dto.setM_id(id);
+			dto.setM_pw(pw);
+			dto.setM_email(email);
+			dto.setM_phone(phone);
+			System.out.println("DTO : " + dto);
+			
+			System.out.println("TEST 2:" + url);
+			request.setAttribute("message", "회원가입 완료되었습니다.");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
+			
+		}
+
+	
+	
+
+	
+
+}

@@ -1,0 +1,140 @@
+@charset "UTF-8";
+*{
+  color: #333;
+}
+
+input:focus{
+	outline: none;
+}
+
+tr,td{
+/* 	border: 1px solid red; */
+	text-align: center;
+}
+
+.bd {
+  position: relative;
+}
+
+.tab {
+  width: 700px;
+  overflow: hidden;
+  background-color: none;
+  margin: auto;
+  margin-top: 10%; 
+  margin-right: 30%;
+  margin-left: 30%;
+  margin-bottom: -1px;
+}
+
+.tablinks{
+  font-size: 20pt;
+}
+
+.tab button {
+  width: 348px;
+  background-color: rgb(52,85,139);
+  float: inherit;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 20px;
+  color: white;
+}
+
+.tab button:hover {
+  background-color: rgb(52,100,139);
+}
+
+.tab button.active {
+  color: #000;
+  background-color: #fff;
+  border-radius: 20px 20px 0 0;
+}
+
+.tabcontent {
+  width: 700px;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  margin-right: 30%;
+  margin-left: 30%;  
+  display: none;
+  padding: 50px 12px;
+  border: none;
+  border-top: none;
+}
+
+.txt {
+  border: none;
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+  border-radius: 30px;
+  background: #D4F4FA;
+  padding: 20px;
+  width: 120px;
+  height: 75px;
+  cursor: pointer;
+}
+
+.select {
+  margin-top: 20%;
+}
+
+#btnSel{
+  background: none;
+  font-weight: bold;
+  font-size: 16pt;
+  margin: 0px;
+}
+#datepicker1,#datepicker2,#datepicker3{
+	width: 110px;
+	font-size: 16px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 7px;
+	margin: 2px;
+	cursor: pointer;
+}
+
+#btn {
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #D4F4FA;
+  padding: 10px;
+  width: 150px;
+  font-weight: bold;
+}
+
+.btnlevel {
+  cursor: pointer;
+  font-size: 16pt;
+  color:skyblue; 
+  background-color:#fff; 
+  border:1px solid skyblue;
+  width: 80px;
+  height: 40px;
+}
+
+.submit_btn{
+	text-align: center;
+	padding-top: 40px;
+}
+
+#btnSearch{
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+  border : 2px solid white;
+  border-radius: 12px;
+  background: rgb(52,85,139);
+  font-weight: bold;
+  font-size: 20pt;
+  padding: 10px
+}
+
+#btnSearch:hover{
+	background: rgb(52,100,139);
+}

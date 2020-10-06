@@ -1,0 +1,48 @@
+package chatbots;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/SessUnreg")
+public class SessUnreg extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	
+	public SessUnreg() {
+		super();
+	}	
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doUser(req,res);
+	}
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doUser(req, res);
+	}
+	protected void doUser(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		HttpSession httpSess = (HttpSession) req.getSession();
+		String chatSessionName = "TestSession";
+		httpSess.setAttribute(chatSessionName, null);
+		String chatSessionValue = (String) httpSess.getAttribute(chatSessionName);// check a httpSess,chatSessionName
+		
+		String param = req.getParameter("param");
+		if (param == null || param.isEmpty()) {
+			param = "2.check the param for the SessionUnRegistrationKey";
+		}
+		
+		System.out.println("======================= session UnRegister ==========================\n");
+		System.out.println("check the sessionObject = " + httpSess);
+		System.out.println("check the sessionName = " + chatSessionName);
+		System.out.println("check the sessionValue = " + chatSessionValue);
+		System.out.println("======================= session UnRegister ==========================\n");
+		
+		res.getWriter().append("Session Unregister\n");
+		res.getWriter().append("sess = " + (String) req.getSession().getAttribute(chatSessionName));
+		//System.out.println("sess = " + (String) req.getSession().getAttribute(chatSessionName));
+	}
+} 

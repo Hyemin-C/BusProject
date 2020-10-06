@@ -1,0 +1,84 @@
+package chatbots;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/SessReg")
+public class SessReg extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+	
+	
+	public SessReg() {
+		super();
+	}
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doUser(req,res);
+	}
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		doUser(req, res);
+	}
+	
+	protected void doUser(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		// parsing to the session
+		HttpSession getHttpSess = (HttpSession) req.getSession();
+		String madeUseridSessionName = "userid";// key
+		String madeUseridSessionValue = "red";
+		//String madeUserpwSessionName = "userpw";// key
+		//String madeUserpwSessionValue = "1234";
+
+		String madeParamName = "param";// key
+		
+		// check to a SessionObject
+		if (getHttpSess == null) {
+			
+			// session Write || url Move
+			// session.invalidate(); // delete SessionObjectKey
+			// res.sendRedirect("main.do");
+			
+		} else {
+
+			// parsing to a userid, userpw
+			//String getUserpwValue = (String) getHttpSess.getAttribute(madeUserpwSessionName);// ="userpw"
+			//String chatUserInfo = (String) httpSess.getAttribute("TestSession");
+			String getUseridValue = (String) getHttpSess.getAttribute(madeUseridSessionName);// ="userid"
+
+
+			// check to a userid, userpw
+			//if(getUserpwValue == null || getUserpwValue.isEmpty());
+			if(getUseridValue == null || getUseridValue.isEmpty());
+			
+			
+			// parsing to a parameter for the contextServlet.
+			String getParam = req.getParameter(madeParamName);
+			if (getParam == null || getParam.isEmpty()) {
+				//getParam = "1.Check the param value for the contextServlet.";
+			}// if
+			
+			
+			
+			// sysPrint
+			System.out.println("======================= session Register ==========================\n");
+			System.out.println("check the sessionObject = " + getHttpSess);
+			System.out.println("check the getUseridValue = " + getUseridValue);
+			//System.out.println("check the getUserpwValue = " + getUserpwValue);
+			System.out.println("======================= session Register ==========================\n");
+			
+			// webPrint
+			res.getWriter().append("Session Register \n");
+			res.getWriter().append("sess = " + (String) req.getSession().getAttribute(getUseridValue));
+			
+			
+		}// if
+		
+		
+	}// doUser()
+	
+}// SessReg{}

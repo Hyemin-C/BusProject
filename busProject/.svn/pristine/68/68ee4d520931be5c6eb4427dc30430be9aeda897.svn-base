@@ -1,0 +1,67 @@
+package FaQ;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.omg.PortableInterceptor.DISCARDING;
+
+import FaQ.FaQDTO;
+import FaQ.FaQDAO;
+
+@WebServlet("/FaQUpdate.do")
+public class FaQUpdateController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doUser(request,response);
+	}//doGet END
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doUser(request,response);
+	}//doPost END
+	
+	protected void doUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		String connect = request.getParameter("cnct");
+		int rn = Integer.parseInt(request.getParameter("rn"));
+		
+		if(connect.equals("update")) {
+			FaQDAO dao = new FaQDAO();
+			FaQDTO dto = new FaQDTO();
+			
+			dto = dao.FaQDetail(rn);
+			int no = dto.getNo();
+			String title = dto.getTitle();
+			String content = dto.getContent();
+			
+			request.setAttribute("rn", rn);	
+			request.setAttribute("no", no);	
+			request.setAttribute("title", title);	
+			request.setAttribute("content", content);	
+			
+			RequestDispatcher dis = request.getRequestDispatcher("FaQ/FaQUpdate.jsp");
+			dis.forward(request, response);
+		}else {
+			int no = Integer.parseInt(request.getParameter("no"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			FaQDAO dao = new FaQDAO();
+			dao.FaQUpdate(no,title,content);
+			
+			response.sendRedirect("FaQDetail.do?rn="+rn);
+		}//if END
+		
+	}//doUser END
+	
+}//FaQController class END

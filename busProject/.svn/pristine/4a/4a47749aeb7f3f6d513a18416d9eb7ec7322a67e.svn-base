@@ -1,0 +1,63 @@
+function selectA(){
+	window.open("b_popUpC.jsp","select","width=500, height=350, left=500, top=250");
+}
+
+function selectB(){
+	window.open("b_popUpD.jsp","select","width=500, height=350, left=500, top=250");
+}
+
+function cityA(selected){
+	opener.timeCheck.departT.value = selected;
+	self.close();
+}
+
+function cityB(selected){	
+	opener.timeCheck.arrivalT.value = selected;
+	self.close();
+}
+
+function seatLevel1(){
+	var norm1 = document.getElementById("normal1");
+	var supe1 = document.getElementById("supe1");
+	var level1 = document.getElementById("normal1").value;
+	supe1.style.color = "lightgrey";
+    supe1.style.borderColor = "white";
+	supe1.style.backgroundColor = "white";
+	norm1.style.color = "white";
+	norm1.style.borderColor = "skyblue";
+	norm1.style.backgroundColor = "skyblue";
+	document.timeCheck.levelO.value = level1;
+}
+
+function seatLevel2(){
+	var norm1 = document.getElementById("normal1");
+	var supe1 = document.getElementById("supe1");
+	var level2 = document.getElementById("supe1").value;
+	supe1.style.color = "white";
+	supe1.style.borderColor = "skyblue";
+	supe1.style.backgroundColor = "skyblue";
+	norm1.style.color = "lightgrey";
+	norm1.style.borderColor = "white";
+	norm1.style.backgroundColor = "white";
+	document.timeCheck.levelO.value = level2;
+}
+
+function searchA(){
+	var departT = document.getElementById("departT").value;
+	var arrivalT = document.getElementById("arrivalT").value;
+	var levelO = document.getElementById("levelO").value;
+	if (departT == "출발"){
+		alert("출발지를 선택하세요");
+		return;
+	}else if (arrivalT == "도착"){
+		alert("도착지를 선택하세요");
+		return;
+	}else if (levelO == "1"){
+		alert("등급을 선택하세요");
+		return;
+	}
+	timeCheck.submit();
+}
+	
+	
+	

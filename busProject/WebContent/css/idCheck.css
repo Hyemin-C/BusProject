@@ -1,0 +1,63 @@
+@charset "EUC-KR";
+body{
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	font-weight: 900;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100hv;
+}
+a{
+	text-decoration: none;
+	outline: none;
+}
+h2{
+	color: rgb(52,85,139);
+	text-align: center;
+	margin: 10px;
+}
+.idBox, .comment{
+/* 	border: 1px solid red; */
+	width: 400px;
+	text-align: center;
+}
+.idBox{
+	border-top: 2px solid #777;
+	padding-top: 10px;
+}
+.comment{
+	color: #999;
+	font-size:14px;
+	border-bottom: 2px solid #777;
+	padding-bottom: 10px;
+}
+input[type=text]{
+	width: 150px;
+	height: 15px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+input[type=text]:hover {
+	border: 1px solid rgb(52,85,139);
+	background: rgb(255,255,250);
+}
+input[type=text]:focus {
+	border: 1px solid rgb(52,85,139);
+	background: rgb(255,255,235);
+}
+input[type=submit],input[type=button]{
+	color: #fff;
+	background: rgb(52,85,139);
+	border: none;
+	border-radius: 5px;
+	height: 25px;
+	cursor: pointer;
+}
+input[type=submit]:hover,input[type=button]:hover{
+	background: rgb(52,100,139);
+}
+font{
+	color: rgb(52,85,139);
+}

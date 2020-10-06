@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="header.jsp" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>[ 2020. 9. 15.오후 2:03:58 ]</title>
+<style type="text/css"> 
+  body{
+    padding: 0;
+    background-image: url("img/main.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;   
+  }     
+  /*123  */
+</style>
+<link rel="stylesheet" type="text/css" href="css/b_pay.css"/>
+</head>
+<body>
+<div id="time">
+   <h3 align="center">결제정보</h3>   
+   <div id="time_main">
+   <form>
+     <table border="0" width="600">
+       <tr>       
+         <td colspan="5" class="line0"> 
+            결제란                      
+         </td>
+       </tr>
+       <tr>
+        <td>
+        <% 
+          String []preseatList = request.getParameterValues("preseatSel");
+          if (preseatList != null){ 
+            for(int i = 0;i < preseatList.length;i++)
+            out.println(preseatList[i]+"번 ");
+          } 
+        
+          String []seatList = request.getParameterValues("seatlist");
+          if (seatList != null){ 
+            for(int i = 0;i < seatList.length;i++)
+            out.println(seatList[i]+"번 ");
+          } 
+        %>
+        </td>
+       </tr>
+
+     </table>
+   </form>
+   </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+h2{
+  font-size: 30px;
+  position:absolute;
+  left:840px;
+  top:145px;
+}
+div#bgtimeCheck {
+  width:700px;
+  height:228px;
+  background-color:white;
+  border:1px solid skyblue;
+  border-radius:10px;
+  position:absolute;
+  left:575px;
+  top:240px;
+ 
+}
+
+.timecheckListIn{
+  position:absolute;
+  margin-top: 15px;
+}
+div#timeCheckList {
+  margin-top: 22%; 
+  margin-right:20%;
+  margin-left: 30%;
+  position:absolute;
+  width:700px;
+  height:400px;
+  background-color:lightgrey;
+  border:1px solid skyblue;
+  border-radius:10px;
+}
+
+tr,td{
+/* 	border: 1px solid red; */
+	text-align: center;
+}
+
+#btnSel {
+  background: none;
+  font-weight: bold;
+  font-size: 16pt;
+  margin: 0px;
+}
+
+.txt {
+  border: none;
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+  border-radius: 30px;
+  background: #D4F4FA;
+  padding: 20px;
+  width: 120px;
+  height: 75px;
+  cursor: pointer;
+}
+
+#datepicker4 {
+	width: 110px;
+	font-size: 16px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 7px;
+	margin: 2px;
+	cursor: pointer;
+}
+
+.btnlevel {
+  cursor: pointer;
+  font-size: 16pt;
+  color:skyblue; 
+  background-color:#fff; 
+  border:1px solid skyblue;
+  width: 80px;
+  height: 40px;
+}
+
+#btnSearch{
+  color: #fff;
+  cursor: pointer;
+  margin-left: 10px;
+  border : 2px solid white;
+  border-radius: 12px;
+  background: rgb(52,85,139);
+  font-weight: bold;
+  font-size: 20pt;
+  padding: 10px
+}
+
+.submit_btn{
+	text-align: center;
+	padding-top: 2px;
+}
+
+#btnSearch:hover{
+	background: rgb(52,100,139);
+}
+
+.line1{
+   border-bottom:2px solid grey;
+   height:20px;
+   font-weight: bold;
+   font-size:20px;
+}
+
+.line{
+   border-bottom:1px solid grey;
+   height:50px;
+   font-size:15px;
+}  
+
+
